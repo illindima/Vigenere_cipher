@@ -7,28 +7,23 @@ class App{
     static run(){
         console.log('[0] App started...')
 
-        let source = fs.readFileSync('../text/sample.txt','utf-8')
-
-        source = Utils.clearText(source,'абвгдежзийклмнопрстуфхцчшщъыьэюя')
-       
         Vigenere.alphabet = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
         Vigenere.key = 'пример'
 
-        // console.log(Vigenere.encrypt(source))
-        // console.log(Vigenere.decrypt(Vigenere.encrypt(source)))
+
+        let source = fs.readFileSync('../text/sample.txt','utf-8')
+
+        source = Utils.clearText(source,Vigenere.alphabet)
+
+        console.log(Vigenere.encrypt(source))
+        console.log(Vigenere.decrypt(Vigenere.encrypt(source)))
        
-       let period = Utils.getPeriod(source, Vigenere.alphabet)
+        let period = Utils.getPeriod(source, Vigenere.alphabet)
         console.log(Utils.getKey(period,Vigenere.alphabet,source))
 
-        console.log('[1] App ended...')
+        console.log('[1] App finished...')
     }
 
 }
-
-
-
-
-
-
 
 App.run()
