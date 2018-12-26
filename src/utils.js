@@ -65,7 +65,7 @@ module.exports = class Utils{
 
     static clearText(text,alphabet){
         let result = [];
-        text.split('').forEach((item) => {
+        text.toLowerCase().split('').forEach((item) => {
             if(alphabet.includes(item)){
                 result.push(item)
             }
@@ -76,6 +76,7 @@ module.exports = class Utils{
     static getPeriod(text,alphabet){
         for(let i = 2; i < 30; i++){
             let c = Utils.crackThatBullShit(Utils.getNLetter(text,i,i-2),alphabet)
+            console.log(c)
             if( c > 0.05 ){
                 return i
             }
