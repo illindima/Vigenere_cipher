@@ -63,7 +63,7 @@ module.exports = class Vigenere{
     static vigenereDecrypt(text){
         let decryptedText = [],key;
         text = Vigenere.transpile(text);
-        key = Vigenere.transpile(Vigenere.key)
+        key  = Vigenere.transpile(Vigenere.key)
    
         for(let i = 0; i < text.length; i++){
            let a = text[i] - key[i];

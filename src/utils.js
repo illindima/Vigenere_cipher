@@ -43,15 +43,8 @@ module.exports = class Utils{
     }
 
     static getMaxFrequentLetter(text,alphabet){
-        let y = {}
+        let y = Utils.getLetterFrequency(text,alphabet)
     
-        for(let i of alphabet){
-            y[i] = 0
-        }
-        
-        for(let i of text){
-            y[i] = y[i] + 1
-        }   
         let max = 0, letter = '';
         
         for(let i in y){
@@ -76,7 +69,7 @@ module.exports = class Utils{
     static getPeriod(text,alphabet){
         for(let i = 2; i < 30; i++){
             let c = Utils.crackThatBullShit(Utils.getNLetter(text,i,i-2),alphabet)
-            console.log(c)
+         
             if( c > 0.05 ){
                 return i
             }
@@ -98,6 +91,7 @@ module.exports = class Utils{
             }
             res.push(sdvig)
         }
+        
 
         let key = []
         for(let i = 0; i < res.length; i++){
@@ -109,6 +103,22 @@ module.exports = class Utils{
         }
 
         return key.join('')
+    }
+
+    static getLetterFrequency(text,alphabet,check = 1){
+        let y = {}
+
+        for(let i in alphabet){
+            y[alphabet[i]] = 0
+        }
+
+        
+        for(let i = 0; i < text.length; i += check){
+                y[text[i]] += 1 
+        }
+
+        return y 
+
     }
     
 }
